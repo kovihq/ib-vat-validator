@@ -1,13 +1,13 @@
 import { checkVAT, Country } from '../index';
 
-export async function checkValidVat(vat: string, countriesList: Country[]) {
-  const result = await checkVAT(vat, countriesList);
+export function checkValidVat(vat: string, countriesList: Country[]) {
+  const result = checkVAT(vat, countriesList);
   if (!result.isValid) console.info('Invalid VAT:', vat);
   expect(result.isValid).toBe(true);
 }
 
-export async function checkInValidVat(vat: string, countriesList: Country[]) {
-  const result = await checkVAT(vat, countriesList);
+export function checkInValidVat(vat: string, countriesList: Country[]) {
+  const result = checkVAT(vat, countriesList);
 
   if (result.isValid) console.info('Following VAT should be invalid:', vat);
   expect(result.isValid).toBe(false);

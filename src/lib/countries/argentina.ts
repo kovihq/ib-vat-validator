@@ -12,6 +12,7 @@ export const argentina: Country = {
     }
 
     total = 11 - (total % 11);
+
     if (total == 11) {
       total = 0;
     }
