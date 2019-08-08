@@ -38,9 +38,16 @@ export function addCharsToStringMexico(item: string, char: string) {
 }
 
 export function addCharsToStringBrazil(item: string, char: string, auxiliarChar?: string) {
+  // to do -> additional implementation for cnpj
   const val = item.split('');
   val.splice(3, 0, char);
   val.splice(7, 0, char);
   val.splice(11, 0, !auxiliarChar ? char : auxiliarChar);
+  return val.join('');
+}
+
+export function addCharsToStringColombia(item: string, char: string) {
+  const val = item.split('');
+  val.splice(9, 0, char);
   return val.join('');
 }

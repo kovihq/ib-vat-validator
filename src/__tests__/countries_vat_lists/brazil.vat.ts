@@ -16,4 +16,4 @@ export const valid = [
   '01374827000128',
 ];
 
-export const invalid = ['GOGF770926MSPnML33', 'BEML920313HMCLNS05', 'BEFI820104MU3'];
+export const invalid = ['11144477736', 'BEML920313HMCLNS05', '11444777000166'];
