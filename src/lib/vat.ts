@@ -7,7 +7,7 @@ export interface Country {
 
 export interface Multipliers {
   // to do - find solution to do a ReadonlyArray -> brazil
-  readonly [key: string]: Array<number>;
+  readonly [key: string]: number[];
 }
 
 export interface Rules {

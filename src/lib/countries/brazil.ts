@@ -36,24 +36,24 @@ function calcDigit(digits: string, multipliers: number[]): number {
 export function isCPF(digits: string, expect: string) {
   let multipliers: number[] = [11];
 
-  let firstControlDigit = calcDigit(digits, brazil.rules.multipliers.common);
+  const firstControlDigit = calcDigit(digits, brazil.rules.multipliers.common);
   multipliers = multipliers.concat(brazil.rules.multipliers.common);
 
-  let secondControlDigit = calcDigit(digits.concat(String(firstControlDigit)), multipliers);
-  let control = '' + firstControlDigit + secondControlDigit;
+  const secondControlDigit = calcDigit(digits.concat(String(firstControlDigit)), multipliers);
+  const control = '' + firstControlDigit + secondControlDigit;
 
   return Number(control) === Number(expect);
 }
 
 export function isCNPJ(digits: string, expect: string) {
-  let multipliers: number[] = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+  const multipliers: number[] = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
-  let firstControlDigit = calcDigit(digits, multipliers);
+  const firstControlDigit = calcDigit(digits, multipliers);
 
   multipliers.unshift(6);
 
-  let secondControlDigit = calcDigit(digits.concat(String(firstControlDigit)), multipliers);
-  let control = '' + firstControlDigit + secondControlDigit;
+  const secondControlDigit = calcDigit(digits.concat(String(firstControlDigit)), multipliers);
+  const control = '' + firstControlDigit + secondControlDigit;
 
   return Number(control) === Number(expect);
 }
