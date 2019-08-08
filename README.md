@@ -8,7 +8,7 @@ npm run test
 
 ```ts
 
-import { checkVAT, belgium, austria } from 'vat'; 
+import { checkVAT, spain, portugal } from 'vat'; 
 
 checkVAT('ESA0011012B', [spain]); // true:  Spain VAT
 checkVAT('ESA0011012B', [spain, portugal]); // true: accept only Spain or Portugal VATs
