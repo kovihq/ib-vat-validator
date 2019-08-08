@@ -1,6 +1,6 @@
-export const name = 'Argentina';
+export const name = 'Mexico';
 
-export const codes = ['AR', 'ARG', '032'];
+export const codes = ['MX', 'MEX', '484'];
 
 export const valid = ['GOGF770826MSPMML33', 'BEML920313HMCLNS09', 'BEFI820104MU8'];
 

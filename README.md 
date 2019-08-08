@@ -1,0 +1,35 @@
+# Getting Start
+
+```ts
+import { checkVAT, belgium, austria } from 'jsvat'; 
+
+checkVAT('ESA0011012B', [spain]); // true:  Spain VATs
+checkVAT('ESA0011012B', [spain, portugal]); // true: accept only Spain or Portugal VATs 
+checkVAT('ESA0011012B', [portugal]); // false: accept only Spain VATs
+```
+
+# Return value
+```ts
+checkVAT() returns a Result Object:
+
+export interface VatCheckResult {
+    value?: string; // 'ESA0011012B': your VAT without extra characters (like '-', spaces, '.', etc)
+    isValid: boolean; // main result - is VAT correct against provided countries or not
+    country?: { // VAT's couuntry (null if not found)
+        name: string; // ISO country name of VAT
+    };
+}
+```
+# List of Countries:
+- Spain
+- Portigal
+- Argentina
+- Peru
+- Mexico
+- Brazil
+
+# All countries at once
+```ts
+import { checkVAT, countries } from 'vat';
+checkVAT('WD12345678', countries);
+```

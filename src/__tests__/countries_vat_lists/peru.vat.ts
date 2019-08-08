@@ -1,6 +1,6 @@
 export const name = 'Peru';
 
-export const codes = ['PE', 'PER', ''];
+export const codes = ['PE', 'PER', '604'];
 
 export const valid = [
   '20503644968',

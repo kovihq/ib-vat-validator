@@ -36,3 +36,11 @@ export function addCharsToStringMexico(item: string, char: string) {
   val.splice(20, 0, char);
   return val.join('');
 }
+
+export function addCharsToStringBrazil(item: string, char: string, auxiliarChar?: string) {
+  const val = item.split('');
+  val.splice(3, 0, char);
+  val.splice(7, 0, char);
+  val.splice(11, 0, !auxiliarChar ? char : auxiliarChar);
+  return val.join('');
+}
