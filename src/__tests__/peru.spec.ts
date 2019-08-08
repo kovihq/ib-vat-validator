@@ -2,7 +2,7 @@ import { peru } from '../index';
 import { invalid, valid } from './countries_vat_lists/peru.vat';
 import { checkInValidVat, checkValidVat, addCharsToStringArgentina } from './utils';
 
-describe('Argentina', () => {
+describe('Peru', () => {
   it('should return true result for valid VATs', () => {
     valid.forEach(vat => checkValidVat(vat, [peru]));
   });

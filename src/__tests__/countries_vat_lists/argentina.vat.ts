@@ -13,6 +13,7 @@ export const valid = [
   '30716054345',
   '30712471642',
   '30712474579',
+  '30710316097',
 ];
 
 export const invalid = [

@@ -8,16 +8,12 @@ export const spain: Country = {
     const { additional, multipliers } = spain.rules;
     if (!additional) return false;
 
-    // National juridical entities
     if (additional[0].test(digits)) return isNationalJuridicalEntities(digits, multipliers.common);
 
-    // Juridical entities other than national ones
     if (additional[1].test(digits)) return isNonNationalJuridical(digits, multipliers.common);
 
-    // Personal number (NIF) (starting with numeric of Y or Z)
     if (additional[2].test(digits)) return isPersonalYtoZ(digits);
 
-    // Personal number (NIF) (starting with K, L, M, or X)
     if (additional[3].test(digits)) return isPersonalKtoX(digits);
 
     return false;
@@ -52,13 +48,11 @@ function extractDigitAndMultiplyByCounter(vat: string, multipliers: ReadonlyArra
 
 function isNationalJuridicalEntities(vat: string, multipliers: ReadonlyArray<number>): boolean {
   let total = extractDigitAndMultiplyByCounter(vat, multipliers, 0);
-  // Now calculate the check digit itself.
   total = 10 - (total % 10);
   if (total === 10) {
     total = 0;
   }
 
-  // Compare it with the last character of the VAT number. If it's the same, then it's valid.
   const expect = Number(vat.slice(8, 9));
   return total === expect;
 }
@@ -66,11 +60,9 @@ function isNationalJuridicalEntities(vat: string, multipliers: ReadonlyArray<num
 function isNonNationalJuridical(vat: string, multipliers: ReadonlyArray<number>): boolean {
   let total = extractDigitAndMultiplyByCounter(vat, multipliers, 0);
 
-  // Now calculate the check digit itself.
   total = 10 - (total % 10);
   const totalStr = String.fromCharCode(total + 64);
 
-  // Compare it with the last character of the VAT number. If it's the same, then it's valid.
   const expect = vat.slice(8, 9);
   return totalStr === expect;
 }

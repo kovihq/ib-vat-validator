@@ -13,18 +13,18 @@ export const argentina: Country = {
 
     total = 11 - (total % 11);
 
-    if (total == 11) {
+    if (Number(total) === 11) {
       total = 0;
     }
 
     const expect = Number(vat[2]);
-    return expect == total;
+    return expect === Number(total);
   },
   rules: {
     multipliers: {
       common: [5, 4, 3, 2, 7, 6, 5, 4, 3, 2],
     },
-    //'30-71096961-9',
+    // '30-71096961-9',
     regex: [
       /\b(20[0-9]{8})([0-9])$/,
       /\b(23[0-9]{8})([0-9])$/,

@@ -26,3 +26,13 @@ export function addCharsToStringArgentina(item: string, char: string) {
   val.splice(11, 0, char);
   return val.join('');
 }
+
+export function addCharsToStringMexico(item: string, char: string) {
+  const val = item.split('');
+  val.splice(4, 0, char);
+  val.splice(11, 0, char);
+  val.splice(13, 0, char);
+  val.splice(16, 0, char);
+  val.splice(20, 0, char);
+  return val.join('');
+}

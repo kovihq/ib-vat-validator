@@ -1,3 +1,13 @@
 {
-  "extends": ["tslint:recommended", "tslint-config-prettier"]
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "rules": {
+    "no-duplicate-variable": true,
+    "max-line-length": {
+      "options": [120]
+    },
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "curly": [true, "ignore-same-line"],
+    "interface-name": false
+  }
 }

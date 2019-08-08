@@ -46,9 +46,9 @@ function getCountry(vat: string, countriesList: ReadonlyArray<Country>): Country
 }
 
 function isVatValidToRegexp(vat: string, regexArr: ReadonlyArray<RegExp>): { isValid: boolean; regex?: RegExp } {
-  for (const regex of regexArr) {
-    const isValid = regex.test(vat);
-    if (isValid) return { isValid: true, regex: regex };
+  for (const r of regexArr) {
+    const isValid = r.test(vat);
+    if (isValid) return { isValid: true, regex: r };
   }
 
   return { isValid: false, regex: undefined };

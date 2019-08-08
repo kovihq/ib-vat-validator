@@ -4,7 +4,7 @@ import { checkInValidVat, checkValidVat, addCharsToStringArgentina } from './uti
 
 describe('Argentina', () => {
   it('should return true result for valid VATs', () => {
-    valid.forEach(vat => checkValidVat(vat, [argentina]));
+    valid.forEach(async vat => await checkValidVat(vat, [argentina]));
   });
 
   it('should return true result for valid VATs with extra dash characters', () => {
