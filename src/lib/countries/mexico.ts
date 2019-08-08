@@ -29,10 +29,9 @@ export const mexico: Country = {
 
 export function isCURP(digits: string, expect: string): boolean {
   let total = 0;
-  const dictionary = '0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
 
   for (let i = 0; i < 17; i++) {
-    total += dictionary.indexOf(digits.charAt(i)) * (18 - i);
+    total += '0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.indexOf(digits.charAt(i)) * (18 - i);
   }
 
   total = 10 - (total % 10);
@@ -44,10 +43,9 @@ export function isCURP(digits: string, expect: string): boolean {
 
 export function isRFC(digits: string, expect: string): boolean {
   let total: any = 0;
-  const dictionary = '0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ Ñ"';
 
   for (let i = 0; i < 13; i++) {
-    total += dictionary.indexOf(digits.charAt(i)) * (13 - i);
+    total += '0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ Ñ'.indexOf(digits.charAt(i)) * (13 - i);
   }
 
   total = 11 - (total % 11);
