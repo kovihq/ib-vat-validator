@@ -1,7 +1,7 @@
 # Getting Start
 
 ```ts
-import { checkVAT, belgium, austria } from 'jsvat'; 
+import { checkVAT, belgium, austria } from 'vat'; 
 
 checkVAT('ESA0011012B', [spain]); // true:  Spain VATs
 checkVAT('ESA0011012B', [spain, portugal]); // true: accept only Spain or Portugal VATs 
