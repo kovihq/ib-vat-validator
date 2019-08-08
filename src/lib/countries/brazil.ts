@@ -4,27 +4,19 @@ export const brazil: Country = {
   name: 'Brazil',
   codes: ['BR', 'BRA', '076'],
   calcFn: (vat: string[]): boolean => {
-    const digits = vat[1];
-    let multipliers: number[] = [11];
+    const { regex } = brazil.rules;
 
-    let firstControlDigit = calcDigit(digits, brazil.rules.multipliers.common);
-    // to do - find better way for create array
+    if (regex[1].test(vat[0])) return isCPF(vat[1], vat[2]);
 
-    multipliers = multipliers.concat(brazil.rules.multipliers.common);
+    if (regex[0].test(vat[0])) return isCNPJ(vat[1], vat[2]);
 
-    let secondControlDigit = calcDigit(digits.concat(String(firstControlDigit)), multipliers);
-
-    let control = '' + firstControlDigit + secondControlDigit;
-
-    const expect = Number(vat[2]);
-
-    return Number(control) === expect;
+    return false;
   },
   rules: {
     multipliers: {
       common: [10, 9, 8, 7, 6, 5, 4, 3, 2],
     },
-    regex: [/([0-9]{3}[0-9]{3}[0-9]{3})([0-9]{2})$/],
+    regex: [/^([0-9]{2}[0-9]{3}[0-9]{3}[0-9]{4})([0-9]{2})$/, /^([0-9]{3}[0-9]{3}[0-9]{3})([0-9]{2})$/],
   },
 };
 
@@ -39,4 +31,29 @@ function calcDigit(digits: string, multipliers: number[]): number {
   total % 11 < 2 ? (digit = 0) : (digit = 11 - (total % 11));
 
   return digit;
+}
+
+export function isCPF(digits: string, expect: string) {
+  let multipliers: number[] = [11];
+
+  let firstControlDigit = calcDigit(digits, brazil.rules.multipliers.common);
+  multipliers = multipliers.concat(brazil.rules.multipliers.common);
+
+  let secondControlDigit = calcDigit(digits.concat(String(firstControlDigit)), multipliers);
+  let control = '' + firstControlDigit + secondControlDigit;
+
+  return Number(control) === Number(expect);
+}
+
+export function isCNPJ(digits: string, expect: string) {
+  let multipliers: number[] = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+
+  let firstControlDigit = calcDigit(digits, multipliers);
+
+  multipliers.unshift(6);
+
+  let secondControlDigit = calcDigit(digits.concat(String(firstControlDigit)), multipliers);
+  let control = '' + firstControlDigit + secondControlDigit;
+
+  return Number(control) === Number(expect);
 }

@@ -27,7 +27,7 @@ export const mexico: Country = {
   },
 };
 
-function isCURP(digits: string, expect: string): boolean {
+export function isCURP(digits: string, expect: string): boolean {
   let total = 0;
   const dictionary = '0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
 
@@ -42,7 +42,7 @@ function isCURP(digits: string, expect: string): boolean {
   return Number(total) === Number(expect);
 }
 
-function isRFC(digits: string, expect: string): boolean {
+export function isRFC(digits: string, expect: string): boolean {
   let total: any = 0;
   const dictionary = '0123456789ABCDEFGHIJKLMN&OPQRSTUVWXYZ Ñ"';
 

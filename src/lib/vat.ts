@@ -70,9 +70,7 @@ export function checkVAT(vat: string, countriesList: ReadonlyArray<Country> = []
   if (!vat) return makeResult(vat, false);
 
   const cleanVAT = removeExtraChars(vat);
-
   const result = makeResult(cleanVAT);
-
   const country = getCountry(cleanVAT, countriesList);
 
   if (!country) return result;

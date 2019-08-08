@@ -4,7 +4,7 @@ import { checkInValidVat, checkValidVat, addCharsToStringBrazil } from './utils'
 
 describe('Brazil', () => {
   it('should return true result for valid VATs', () => {
-    valid.forEach(async vat => await checkValidVat(vat, [brazil]));
+    valid.forEach(vat => checkValidVat(vat, [brazil]));
   });
 
   it('should return true result for valid VATs with extra point and dash characters', () => {
