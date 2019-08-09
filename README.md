@@ -62,7 +62,7 @@ import { checkVAT, countries } from 'vat';
 checkVAT('11444777000161', countries);
 ```
 
-## Simple function to calculate vat validecion digit
+## Simple function to calculate vat validation digit
 
 ---
 
