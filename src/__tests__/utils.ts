@@ -13,10 +13,9 @@ export function checkInValidVat(vat: string, countriesList: Country[]) {
   expect(result.isValid).toBe(false);
 }
 
-export function addCharsToString(item: string, char: string) {
+export function addCharsToStringSpain(item: string, char: string) {
   const val = item.split('');
-  val.splice(3, 0, char);
-  val.splice(7, 0, char);
+  val.splice(1, 0, char);
   return val.join('');
 }
 

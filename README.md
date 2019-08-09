@@ -10,12 +10,12 @@ npm run test
 
 import { checkVAT, spain, portugal } from 'vat';
 
-checkVAT('ESA0011012B', [spain]); // true:  Spain VAT
-checkVAT('ESA0011012B', [spain, portugal]); // true: accept only Spain or Portugal VATs
-checkVAT('ESA0011012B', [portugal]); // false: accept only Spain VAT
+checkVAT('A0011012B', [spain]); // true:  Spain VAT
+checkVAT('A0011012B', [spain, portugal]); // true: accept only Spain or Portugal VATs
+checkVAT('A0011012B', [portugal]); // false: accept only Spain VAT
 
 For Not European country
-checkVAT('GOGF770926MSPnML33', [mexico]); // true:  Mexico VAT
+checkVAT('GOGF770826MSPMML33', [mexico]); // true:  Mexico VAT
 
 ```
 
@@ -175,14 +175,97 @@ function valruc(valor){
 # Mexico
 
 ```ts
+function curpValida(curp) {
+  var re = /^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/,
+    validado = curp.match(re);
+
+  if (!validado) return false;
+
+  function digitoVerificador(validado[1]) {
+    (lngSuma = 0.0), (lngDigito = 0.0);
+    for (var i = 0; i < 17; i++)
+      lngSuma = lngSuma + '0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'.indexOf(validado[1].charAt(i)) * (18 - i);
+    lngDigito = 10 - (lngSuma % 10);
+    if (lngDigito == 10) return 0;
+    return lngDigito;
+  }
+
+  if (validado[2] != digitoVerificador(validado[1])) return false;
+
+  return true;
+}
 ```
 
 # Brazil
 
+## CPF
+
 ```ts
+// var strCPF = "12345678909";
+function TestaCPF(strCPF) {
+  let Resto;
+  let Suma = 0;
+
+  for (i = 1; i <= 9; i++) Suma = Suma + parseInt(strCPF.substring(i - 1, i)) * (11 - i);
+  Resto = (Suma * 10) % 11;
+
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(strCPF.substring(9, 10))) return false;
+
+  Suma = 0;
+  for (i = 1; i <= 10; i++) Suma = Suma + parseInt(strCPF.substring(i - 1, i)) * (12 - i);
+  Resto = (Suma * 10) % 11;
+
+  if (Resto == 10 || Resto == 11) Resto = 0;
+  if (Resto != parseInt(strCPF.substring(10, 11))) return false;
+  return true;
+}
+```
+
+## CNPJ
+
+```ts
+function validarCNPJ(cnpj) {
+  tamano = cnpj.length - 2;
+  numeros = cnpj.substring(0, tamano);
+  digitos = cnpj.substring(tamano);
+  suma = 0;
+  pos = tamano - 7;
+  for (i = tamano; i >= 1; i--) {
+    soma += numeros.charAt(tamano - i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+  resultado = suma % 11 < 2 ? 0 : 11 - (suma % 11);
+  if (resultado != digitos.charAt(0)) return false;
+
+  tamano = tamano + 1;
+  numeros = cnpj.substring(0, tamano);
+  suma = 0;
+  pos = tamano - 7;
+  for (i = tamano; i >= 1; i--) {
+    suma += numeros.charAt(tamano - i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+  resultado = suma % 11 < 2 ? 0 : 11 - (suma % 11);
+  if (resultado != digitos.charAt(1)) return false;
+
+  return true;
+}
 ```
 
 # Colombia
 
 ```ts
+function CalcularDigitoVerificacion(nit) {
+  const vector = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71];
+  let total = 0;
+
+  for (let i = 0; i < nit.length; i++) {
+    let temp = Math.trunc(Number(nit[nit.length - 1 - i]));
+    total = total + temp * vector[i];
+  }
+
+  let residuo = total % 11;
+  return residuo > 1 ? 11 - residuo : residuo;
+}
 ```

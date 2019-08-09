@@ -4,17 +4,17 @@ export const spain: Country = {
   name: 'Spain',
   codes: ['ES', 'ESP', '724'],
   calcFn: (vat: string[]): boolean => {
-    const digits = vat[2];
-    const { additional, multipliers } = spain.rules;
-    if (!additional) return false;
+    const digits = vat[0];
 
-    if (additional[0].test(digits)) return isNationalJuridicalEntities(digits, multipliers.common);
+    const { regex, multipliers } = spain.rules;
 
-    if (additional[1].test(digits)) return isNonNationalJuridical(digits, multipliers.common);
+    if (regex[0].test(digits)) return isNationalJuridicalEntities(digits, multipliers.common);
 
-    if (additional[2].test(digits)) return isPersonalYtoZ(digits);
+    if (regex[1].test(digits)) return isNonNationalJuridical(digits, multipliers.common);
 
-    if (additional[3].test(digits)) return isPersonalKtoX(digits);
+    if (regex[2].test(digits)) return isPersonalYtoZ(digits);
+
+    if (regex[3].test(digits)) return isPersonalKtoX(digits);
 
     return false;
   },
@@ -22,13 +22,7 @@ export const spain: Country = {
     multipliers: {
       common: [2, 1, 2, 1, 2, 1, 2],
     },
-    regex: [
-      /^(ES)([A-Z]\d{8})$/,
-      /^(ES)([A-HN-SW]\d{7}[A-J])$/,
-      /^(ES)([0-9YZ]\d{7}[A-Z])$/,
-      /^(ES)([KLMX]\d{7}[A-Z])$/,
-    ],
-    additional: [/^[A-H|J|U|V]\d{8}$/, /^[A-H|N-S|W]\d{7}[A-J]$/, /^[0-9|Y|Z]\d{7}[A-Z]$/, /^[K|L|M|X]\d{7}[A-Z]$/],
+    regex: [/^[A-H|J|U|V]\d{8}$/, /^[A-H|N-S|W]\d{7}[A-J]$/, /^[0-9|Y|Z]\d{7}[A-Z]$/, /^[K|L|M|X]\d{7}[A-Z]$/],
   },
 };
 
