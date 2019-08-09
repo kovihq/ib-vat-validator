@@ -5,7 +5,7 @@ export const portugal: Country = {
   codes: ['PT', 'PRT', '620'],
   calcFn: (vat: string[]): boolean => {
     let total = 0;
-    const digits = vat[2];
+    const digits = vat[1];
 
     for (let i = 0; i < 8; i++) {
       total += Number(digits.charAt(i)) * portugal.rules.multipliers.common[i];
@@ -23,6 +23,6 @@ export const portugal: Country = {
     multipliers: {
       common: [9, 8, 7, 6, 5, 4, 3, 2],
     },
-    regex: [/^(PT)(\d{9})$/],
+    regex: [/^(\d{9})$/],
   },
 };
