@@ -255,6 +255,8 @@ function validarCNPJ(cnpj) {
 
 # Colombia
 
+para la validacion de 9 digitos hay que eliminar 43, 47, 53, 59, 67, 71
+
 ```ts
 function CalcularDigitoVerificacion(nit) {
   const vector = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71];
@@ -265,7 +267,7 @@ function CalcularDigitoVerificacion(nit) {
     total = total + temp * vector[i];
   }
 
-  let residuo = total % 11;
-  return residuo > 1 ? 11 - residuo : residuo;
+  let resto = total % 11;
+  return resto > 1 ? 11 - resto : resto;
 }
 ```
