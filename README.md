@@ -214,7 +214,7 @@ function curpValida(curp) {
 
 # Brazil
 
-###CPF
+### CPF
 
 ```ts
 // var strCPF = "12345678909";
@@ -238,7 +238,7 @@ function TestaCPF(strCPF) {
 }
 ```
 
-###CNPJ
+### CNPJ
 
 ```ts
 function validarCNPJ(cnpj) {
