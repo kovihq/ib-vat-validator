@@ -1,6 +1,6 @@
 # Use
 
-To chack all
+To check all
 
 ```console
 npm run test
