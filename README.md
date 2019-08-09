@@ -1,3 +1,15 @@
+# Create local package
+
+```console
+npm pack
+```
+
+# Install from locale route
+
+```console
+npm i path/vat-validator-1.0.0.tgz
+```
+
 # Use
 
 To check all
@@ -49,6 +61,10 @@ export interface VatCheckResult {
 import { checkVAT, countries } from 'vat';
 checkVAT('11444777000161', countries);
 ```
+
+## Simple function to calculate vat validecion digit
+
+---
 
 # Spain
 
@@ -198,7 +214,7 @@ function curpValida(curp) {
 
 # Brazil
 
-## CPF
+###CPF
 
 ```ts
 // var strCPF = "12345678909";
@@ -222,7 +238,7 @@ function TestaCPF(strCPF) {
 }
 ```
 
-## CNPJ
+###CNPJ
 
 ```ts
 function validarCNPJ(cnpj) {
