@@ -12,6 +12,12 @@ npm i path/vat-validator-1.0.0.tgz
 
 # Use
 
+### install
+
+```console
+npm i ib-vat-validator
+```
+
 To check all
 
 ```console
@@ -37,7 +43,7 @@ checkVAT('GOGF770826MSPMML33', [mexico]); // true:  Mexico VAT
 checkVAT() returns a Result Object:
 
 export interface VatCheckResult {
-    value?: string; // 'ESA0011012B': your VAT without extra characters (like '-', spaces, '.', etc)
+    value?: string; // 'A0011012B': your VAT without extra characters (like '-', spaces, '.', etc)
     isValid: boolean; // main result - is VAT correct against provided countries or not
     country?: { // VAT's country (null if not found)
         name: string; // ISO country name of VAT
