@@ -4,10 +4,10 @@
 npm pack
 ```
 
-# Install from locale route
+# Install 
 
 ```console
-npm i path/vat-validator-1.0.0.tgz
+npm i ib-vat-validator
 ```
 
 # Use
