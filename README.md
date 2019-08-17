@@ -26,7 +26,7 @@ npm run test
 
 ```ts
 
-import { checkVAT, spain, portugal } from 'vat';
+import { checkVAT, spain, portugal } from 'ib-vat-validator';
 
 checkVAT('A0011012B', [spain]); // true:  Spain VAT
 checkVAT('A0011012B', [spain, portugal]); // true: accept only Spain or Portugal VATs
@@ -64,7 +64,7 @@ export interface VatCheckResult {
 # All countries at once
 
 ```ts
-import { checkVAT, countries } from 'vat';
+import { checkVAT, countries } from 'ib-vat-validator';
 checkVAT('11444777000161', countries);
 ```
 
