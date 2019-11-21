@@ -6,10 +6,8 @@ export const mexico: Country = {
   calcFn: (vat: string[]): boolean => {
     const { regex } = mexico.rules;
 
-    if (regex[0].test(vat[0])) return isCURP(vat[1], vat[2]);
-    if (regex[1].test(vat[0])) return isRFC(vat[1], vat[5]);
-
-    return false;
+    return regex[0].test(vat[0]);
+    // if (regex[1].test(vat[0])) return isRFC(vat[1], vat[5]);
   },
   rules: {
     multipliers: {
