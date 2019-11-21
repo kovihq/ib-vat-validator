@@ -17,7 +17,7 @@ export const mexico: Country = {
     // 10,15,17 y 20,
     regex: [
       // tslint:disable-next-line
-      /^([A-Z][AEIOU][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AG|B[CS]|C[MSHXOL]|D[G]|G[TR]|HG|JC|EM|M[IO]|N[AL]|OA|PU|Q[TR]|S[LIO]|T[TML]|VE|YU|ZA)[A-Z\d])(\d)$/
+      /^([A-Z][AEIOU][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM]([A-Z]{2})[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$/
     ],
 
     // to do additional regex and change regex for initial validation
