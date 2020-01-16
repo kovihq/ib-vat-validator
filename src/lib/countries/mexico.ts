@@ -54,12 +54,12 @@ export function isRFC(digits: string, expect: string): boolean {
 }
 
 export function checkCurp (value: string) {
-	function calculaDigito(c:string){
+	function calculaDigito(c:string) {
 		var segRaiz      = c.substring(0,17)
 		var chrCaracter  = "0123456789ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
-		var intFactor    = new Array(17)
-		var lngSuma      = 0.0
-		var lngDigito    = 0.0
+		var	intFactor    = new Array(17)
+		var	lngSuma      = 0.0
+		var	lngDigito    = 0.0
 		
 		for(var i=0; i<17; i++)	{
 			for(var j=0;j<37; j++) {
@@ -75,10 +75,9 @@ export function checkCurp (value: string) {
 		if(lngDigito==10){lngDigito=0;}
 		return lngDigito;
 	}
-  var curp = value.toUpperCase();
-  var reg:RegExp
-  
-  if (curp === '') { return true; }
+	var reg:RegExp
+	var curp = value.toUpperCase();
+	if (curp === '') { return true; }
 
 	if (curp.length < 18) { return false }
 
