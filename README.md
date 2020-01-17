@@ -1,29 +1,21 @@
-# Create local package
 
-```console
-npm pack
-```
-
-# Install 
-
-```console
-npm i ib-vat-validator
-```
-
-# Use
 
 ### install
-
 ```console
-npm i ib-vat-validator
+npm i utils-validator-kovi
+#or
+yarn add utils-validator-kovi
 ```
 
 To check all
-
 ```console
 npm run test
+#or
+yarn test
+
 ```
 
+# Examples / Usage
 ```ts
 
 import { checkVAT, spain, portugal } from 'ib-vat-validator';
@@ -68,7 +60,7 @@ import { checkVAT, countries } from 'ib-vat-validator';
 checkVAT('11444777000161', countries);
 ```
 
-## Simple function to calculate vat validation digit
+#### Simple function to calculate vat validation digit
 
 ---
 
@@ -277,8 +269,7 @@ function validarCNPJ(cnpj) {
 
 # Colombia
 
-para la validacion de 9 digitos hay que eliminar 43, 47, 53, 59, 67, 71
-
+to validation of 9 digits you need to remove 43, 47, 53, 59, 67, 71
 ```ts
 function CalcularDigitoVerificacion(nit) {
   const vector = [3, 7, 13, 17, 19, 23, 29, 37, 41, 43, 47, 53, 59, 67, 71];
