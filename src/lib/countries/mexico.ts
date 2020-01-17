@@ -75,9 +75,11 @@ export function checkCurp (value: string) {
 		if(lngDigito==10){lngDigito=0;}
 		return lngDigito;
 	}
-	var reg:RegExp
-	var curp = value.toUpperCase();
-	if (curp === '') { return true; }
+
+	let curp = value.toUpperCase()
+  let reg: RegExp = new RegExp(/[A-Z]{4}\d{6}/)
+  
+  if (curp === '') { return true; }
 
 	if (curp.length < 18) { return false }
 
@@ -91,8 +93,10 @@ export function checkCurp (value: string) {
 		if(!(parseInt(digito) == parseInt(curp.substring(17,18))))	{
 			return false
 		}
+
 	}
 	else{
+
 		switch (curp.length) {
 			case 10 : reg = /[A-Z]{4}\d{6}/; break;
 			case 11 : reg = /[A-Z]{4}\d{6}[HM]/; break;
