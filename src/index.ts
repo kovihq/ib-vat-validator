@@ -8,3 +8,5 @@ export { countries };
 export { spain, portugal, argentina, peru, mexico, brazil, colombia } from './lib/countries';
 
 export { checkVAT, Rules, Country, Multipliers, VatCheckResult } from './lib/vat';
+
+export { checkCurp } from './lib/curp';
